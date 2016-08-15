@@ -32,4 +32,4 @@
 
 ## 徵人彩蛋
 1. 整個徵人頁面就是仿造 sublime或 atom之類的編輯器的感覺。
-2. ![Console裡的彩蛋](http://imgur.com/a/yfzIE)
+2. ![Console裡的彩蛋](http://i.imgur.com/UwSQbFf.png)
