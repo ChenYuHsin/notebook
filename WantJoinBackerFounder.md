@@ -32,12 +32,12 @@
 
 ## 徵人彩蛋
 1. 整個頁面風格向 sublime或 atom之類的編輯器致敬。
-2. 在 console裡輸入職缺，會有回應，不過僅限"前端工程師"、"後端工程師"和"技術專案經理"。
+2. 在 console裡輸入職缺，會有回應，不過僅限"前端工程師"、"後端工程師"和"技術專案經理"。  
 ![Imgur](http://i.imgur.com/njBOI83.png)
 ![Imgur](http://i.imgur.com/hacCz7o.png)
-3. 有一個被註解掉的 Call To Action。
+3. 有一個被註解掉的 Call To Action。  
 ![Imgur](http://i.imgur.com/6abTEQ7.png)
-4. 點最右邊的 thumbnail會出現：我們徵人囉！
+4. 點最右邊的 thumbnail會出現：我們徵人囉！  
 ![Imgur](http://i.imgur.com/0too8wQ.png)
 ![Imgur](http://i.imgur.com/A3F2t1L.png)
 ![Imgur](http://i.imgur.com/4TYx7hx.png)
