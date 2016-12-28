@@ -18,7 +18,12 @@ git branch <name>
 git checkout <name>
 git checkout -b <name>
 ```
+When you create a branch in your project, you're creating an environment where you can try out new ideas. Changes you make on a branch don't affect the master branch, so you're free to experiment and commit changes, safe in the knowledge that your branch won't be merged until it's ready to be reviewed by someone you're collaborating with.
+
+
+
 ## git merge
+
 If you've made a bunch of changes to a branch, let's call it 「develop」, and you want to merge that branch back into your master branch, you use the `git merge <branch>` command.
 
 You'll want to checkout the master branch, then run git merge develop to merge develop into the master branch.
@@ -85,6 +90,6 @@ This will also open vim, and the text editing and saving rules are the same as a
 feat: add stripe checkout button to payments page
 - add stripe checkout button
 - write tests for checkout
-One advantage to keeping with the types listed in the guideline is that it makes writing change logs easier. You can also include information in the footer (again, specified in the guideline) that references issues.
-Note: you should avoid rebasing and squashing your commits if you are collaborating on a project, and have code pushed to GitHub. If you start changing version history under people's noses, you could end up making everyone's lives more difficult with bugs that are difficult to track.
-There are an almost endless number of possible commands with Git, but these commands are probably the only ones you'll need to know for your first few years of programming.
+  One advantage to keeping with the types listed in the guideline is that it makes writing change logs easier. You can also include information in the footer (again, specified in the guideline) that references issues.
+  Note: you should avoid rebasing and squashing your commits if you are collaborating on a project, and have code pushed to GitHub. If you start changing version history under people's noses, you could end up making everyone's lives more difficult with bugs that are difficult to track.
+  There are an almost endless number of possible commands with Git, but these commands are probably the only ones you'll need to know for your first few years of programming.
