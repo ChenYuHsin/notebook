@@ -1,23 +1,29 @@
-# flex
-## Reference：
+# flex 詳解
 
-[深入解析 CSS Flexbox](http://www.oxxostudio.tw/articles/201501/css-flexbox.html)  
+flex用於在 RWD或行動版網頁中實現更便利的佈局方式，不再侷限於 float和 position。flex佈局只會作用於設定（display: flex）的容器中，而簡單來說 flex的運作基礎就是**子容器根據自身的屬性設定去瓜分父容器所佔據的空間**。
 
-[Flexbox Froggy](http://flexboxfroggy.com/)
+## flex容器設定
 
-[A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+```css
+.flex-container{
+  display: flex;
+}
+```
 
-http://zhoon.github.io/css3/2014/08/23/flex.html
+單單一行 CSS 程式碼我們完成了下面這些功能
 
-https://segmentfault.com/a/1190000006741711
-
-https://segmentfault.com/a/1190000005006056
-
-https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties
+- 套用 `.flex-container` 的元素成為一個 `flex container`
+- 內部第一層的子元素會變成 `flex item`
+- 預設 Flex item 會依照水平的方式排列
+- Flex item 會依照程式碼的順序排列
+- Flex item 會在 container 內從左至右排列
+- **Flex item 的尺寸會依照正規的 width 屬性或內容自身的寬, block-box(div etc) 不會自動長滿 100%**
+- 如果沒有足夠的空間, 那麼 Flex item 會自動依照寬度 width 的比例去縮小, 直到空間完全不足 scrollbar 才會出現
+- Flex item 會自動展延高度使其與其他 Flex item 中最高的那個相等
 
 ------
 
-## Properties for the Parent：
+## Properties for the Parent(flex-container)：
 
 ### display
 
@@ -83,7 +89,7 @@ This is a shorthand `flex-direction` and `flex-wrap`properties, which togethe
 
   ​
 
-### property: align-items 操縱物件的垂直方向
+### align-items 操縱物件的垂直方向
 
 ![img](https://css-tricks.com/wp-content/uploads/2014/05/align-items.svg)
 
@@ -107,21 +113,23 @@ This is a shorthand `flex-direction` and `flex-wrap`properties, which togethe
 
 ------
 
-## Properties for the Children
+## Properties for the Children(flex-item)：
 
-### property: order 用數值表示物件順序 (用在單一物件上)
+### order 用數值表示物件順序 (用在單一物件上)
 
 By default, items have a value of 0, but we can use this property to set it to a positive or negative integer value. 預設是0，數字越小越前面。
 
 ![img](https://css-tricks.com/wp-content/uploads/2013/04/order-2.svg)
 
-### property: flex = flex-grow, flex-shrink, flex-basis
+### flex = flex-grow, flex-shrink, flex-basis
 
-The `flex` property is a shorthand for the flex-grow, flex-shrink, and the flex-basis properties.
-
-`Default value:  0 1 auto` 
+The `flex` property is a shorthand for the flex-grow, flex-shrink, and the flex-basis properties.`Default value:  0 1 auto` 
 
 flex 用來設定子元素如何瓜分父元素的**剩餘空間**，而後面三個是 property: flex的 3個子屬性，需要一起理解。
+
+#### 主體邏輯
+
+如果子容器設置了 flex-basis或者 width，那麼在分配空間之前，他們會先跟父容器預約這麼多的空間，然後剩下的才是歸入到剩餘空間，然後父容器再把剩餘空間分配給設置了 flex-grow的容器。 如果同時設置flex-basis和 width，那麼 width屬性會被覆蓋，也就是說 flex-basis的優先級比 width高。
 
 什麼是剩餘空間呢？具備 flex環境的父容器，通常是有一條主軸和一條側軸，默認情況下主軸就是水平從左向右的，側軸是垂直從上到下的（類似書寫模式）。 剩餘空間就是父容器在主軸的方向上還有多少可用的空間。比如有一網頁結構：
 
@@ -166,21 +174,12 @@ flex 範例：
 
 * Flex-grow計算邏輯-橫向展開
 
-  以下計算步驟只適用於當橫向展開時 flexbox容器寬度大於所有子元素的寬度時：
-
-  1.  首先算出flexbox容器內所有子元素的原始寬度總和initial_space。
-
-
-  2.  用flexbox容器的總寬度減去initial_space，得到flexbox容器內剩餘空間remained_space。
-
-
-  3.  獲取flexbox容器中有flex-grow屬性的子元素，算出flex-grow的總和grow_total。
-
-
-  4.  Flew-grow=0的元素默認按原大小顯示。
-
-
-  5.  Flew-grow>0的元素，寬度=原寬度+ flexgrow/grow_tatal*remainded_space。
+以下計算步驟只適用於當橫向展開時 flexbox容器寬度大於所有子元素的寬度時：
+1. 首先算出 flexbox容器內所有子元素的原始寬度總和 initial_space。
+2. 用 flexbox容器的總寬度減去 initial_space，得到 flexbox容器內剩餘空間 remained_space。
+3. 獲取 flexbox容器中有 flex-grow屬性的子元素，算出 flex-grow的總和 grow_total。
+4. Flew-grow = 0的元素默認按原大小顯示。
+5. Flew-grow > 0的元素，寬度=原寬度+ flex-grow / grow_tatal * remainded_space。
 
 同樣使用上面範例做說明：
 
@@ -233,15 +232,15 @@ flex-grow 宣告寫法
 
 - 以下計算步驟只適用於當橫向展開時flexbox容器寬度小於所有子元素的寬度時：
 
-  1.  首先算出flexbox容器內所有子元素的原始寬度總和initial_space。
+  1.  首先算出 flexbox容器內所有子元素的原始寬度總和 initial_space。
 
-  2.  用initial_space減去flexbox容器的總寬度，得到超出flexbox容器的那部分空間over_space。
+  2.  用 initial_space減去 flexbox容器的總寬度，得到超出 flexbox容器的那部分空間 over_space。
 
-  3.  獲取flexbox容器中flex-shrink>0的子元素，算出flex-shrink的總和shrink_total。
+  3.  獲取 flexbox容器中 flex-shrink > 0的子元素，算出 flex-shrink的總和 shrink_total。
 
-  4.  Flew-shrink=0的元素默認按原大小顯示。
+  4.  Flew-shrink = 0的元素默認按原大小顯示。
 
-  5.  Flew-shrink>0的元素，寬度=原寬度-flexshrink/shrink_tatal*over_space。
+  5.  Flew-shrink > 0的元素，寬度 = 原寬度 - flex-shrink / shrink_tatal * over_space。
 
 同樣架構做範例說明：
 
@@ -282,11 +281,10 @@ span.C{
 
 #### flex-basis 物件預設寬度
 
-- 如果子元素有flex-basis，就算作子元素的原始width（不包括邊框和補邊）。
+- 如果子元素有 flex-basis，就算作子元素的原始 width（不包括邊框和補邊）。
 - 如果沒有`flex-basis`或其屬性值為`0`，在有`width`的情況下以`width`來計，沒有`width`的話，則按其內容來計。
 - 如果同時聲明`width`屬性和`flex-basis`屬性時，會以`flex-basis`的值來計算。
-- 如果 flex-basis: content，表示默認使用元素內容大寬度。
-- 預設為 auto：無特定寬度值，取決於其它屬性值。
+- 預設為 auto：無特定寬度值，取決於其它屬性值( = flex-basis: 0px)。
 
 
 ```css
@@ -297,7 +295,33 @@ span.C{
 
 
 
-#### flex 總結
+#### flex syntax總結
+
+```css
+/* 0 0 auto */
+flex: none;
+
+/* One value, unitless number: flex-grow (flex-basis changes to 0, 而此時的 flex-shrink會是預設值：1。) */
+flex: 2;
+
+/* One value, width/height: flex-basis */
+flex: 10em;
+flex: 30px;
+
+/* Two values: flex-grow | flex-basis */
+flex: 1 30px;
+
+/* Two values: flex-grow | flex-shrink (flex-basis changes to 0) */
+flex: 2 2;
+
+/* Three values: flex-grow | flex-shrink | flex-basis */
+flex: 2 2 10%;
+
+/* Global values */
+flex: inherit;
+flex: initial;
+flex: unset;
+```
 
 * 幾個常見的表示法：	 
 
@@ -307,9 +331,8 @@ span.C{
 
 * 如果父級的空間足夠：`flex-grow`有效，`flex-shrink`無效。
 * 如果父級的空間不夠：`flex-shrink` 有效，`flex-grow`無效。
-* ​
 
-### property: align-self
+### align-self
 
 ![img](https://css-tricks.com/wp-content/uploads/2014/05/align-self.svg)
 
@@ -321,3 +344,20 @@ the same values as align-items and its value for the specific item.
 }
 ```
 
+------
+
+## Reference：
+
+[Flexbox Froggy](http://flexboxfroggy.com/) 
+練習 flex用法的小遊戲
+
+[A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) 
+flex完整圖示講解
+
+http://zhoon.github.io/css3/2014/08/23/flex.html 
+https://segmentfault.com/a/1190000006741711
+https://segmentfault.com/a/1190000005006056
+剩餘空間的詳盡計算請參閱以上文章
+
+https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties
+flex的 Visual Guide ，可以動態即時展現結果
