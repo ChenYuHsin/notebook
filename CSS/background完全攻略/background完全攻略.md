@@ -4,11 +4,90 @@
 
 If a [`background-image`](https://developer.mozilla.org/en-US/docs/Web/CSS/background-image) is specified, the **background-attachment** [CSS](https://developer.mozilla.org/en-US/docs/CSS) property determines whether that image's position is fixed within the viewport, or scrolls along with its containing block.
 
+### syntax
+
+```scss
+background-attachment: scroll;
+background-attachment: fixed;
+background-attachment: local;
+
+background-attachment: inherit;
+```
+
+### value
+
+#### fixed
+
+## background-clip
+
+決定背景圖或背景顏色的顯現範圍。
+
+預設值是 `background-clip: border-box;`
+
+### syntax
+
+```scss
+background-clip: border-box;
+background-clip: padding-box;
+background-clip: content-box;
+```
+
+
+
 ## background-repeat
 
 If a background image is specified, the `background-repeat` property defines whether the image is repeated (tiled), and how.
 
 Repeating a background image happens after it has been [sized](http://tympanus.net/codrops/css_reference/background-size) and [positioned](http://tympanus.net/codrops/css_reference/background-position).
+
+### syntax
+
+```scss
+/* 單值語法 */
+
+background-repeat: repeat;
+background-repeat: space;
+background-repeat: round;
+background-repeat: no-repeat;
+background-repeat: repeat-x;
+	// 上面代表 background-repeat: repeat no-repeat;
+background-repeat: repeat-y;
+	// 上面代表 background-repeat: no-repeat repeat;
+
+/* 雙值語法: 水平horizontal | 垂直vertical */
+background-repeat: repeat space;
+background-repeat: repeat repeat;
+background-repeat: round space;
+background-repeat: no-repeat round;
+
+background-repeat: inherit;
+```
+
+### value
+
+#### repeat
+
+圖像會按需重複來覆蓋整個背景圖片所在的區域. 最後一個圖像會被裁剪, 如果它的大小不合適的話.
+
+#### space
+
+圖像會儘可能得重複, 但是不會裁剪. **第一個和最後一個圖像會被固定在起點和終點的邊上, 同時空白會均勻地分佈在圖像之間.** 
+
+[`background-position`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-position)屬性會被忽視, 除非只有一個圖像能被無裁剪地顯示，只在一種情況下裁剪會發生, 那就是圖像太大了以至於沒有足夠的空間來完整顯示一個圖像.
+
+#### round
+
+當前 browser還沒有廣泛支持
+
+隨著允許的空間在尺寸上的增長, 被重複的圖像將會伸展(沒有空隙), 直到有足夠的空間來添加一個圖像. 當下一個圖像被添加後, 所有的當前的圖像會被壓縮來騰出空間. 例如, 一個圖像原始大小是260px, 重複三次之後, 可能會被伸展到300px, 直到另一個圖像被加進來. 這樣他們就可能被壓縮到225px.
+
+譯者註: 關鍵是瀏覽器怎麼計算什麼時候應該添加一個圖像進來, 而不是繼續伸展.
+
+#### no-repeat
+
+圖像不會被重複(因為背景圖像所在的區域將可能沒有完全被覆蓋). 那個沒有被重複的背景圖像的位置是由[`background-position`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-position)屬性來決定.
+
+
 
 ## background-origin
 
