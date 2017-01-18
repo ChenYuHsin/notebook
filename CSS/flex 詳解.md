@@ -45,8 +45,11 @@ This defines a flex container; inline or block depending on the given value. It 
 ```
 
 - row: Items are placed the same as the text direction.
+
 - row-reverse: Items are placed opposite to the text direction.
+
 - column: Items are placed top to bottom.
+
 - column-reverse: Items are placed bottom to top.
 
 
@@ -71,7 +74,7 @@ By default, flex items will all try to fit onto one line. You can change that an
 
 This is a shorthand `flex-direction` and `flex-wrap`properties, which together define the flex container's main and cross axes. Default is `row nowrap`.
 
-### justy-content 操縱物件的水平方向
+### justify-content 操縱物件的水平方向
 
 ![img](https://css-tricks.com/wp-content/uploads/2013/04/justify-content.svg)
 
@@ -100,7 +103,11 @@ This is a shorthand `flex-direction` and `flex-wrap`properties, which togethe
 - stretch: Items are stretched to fit the container.
 
 
-### align-content
+Notice that when the flex direction is a column, `justify-content` changes to the vertical and `align-items` to the horizontal.
+
+### align-content 多根軸線的對齊方式
+
+`align-content`屬性定義了多根軸線的對齊方式。如果項目只有一根軸線，該屬性不起作用。
 
 ![img](https://css-tricks.com/wp-content/uploads/2013/04/align-content.svg)
 
@@ -352,6 +359,7 @@ the same values as align-items and its value for the specific item.
 練習 flex用法的小遊戲
 
 [A Complete Guide to Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) 
+http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
 flex完整圖示講解
 
 http://zhoon.github.io/css3/2014/08/23/flex.html 
@@ -361,3 +369,6 @@ https://segmentfault.com/a/1190000005006056
 
 https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties
 flex的 Visual Guide ，可以動態即時展現結果
+
+
+

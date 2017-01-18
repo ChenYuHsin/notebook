@@ -1,4 +1,20 @@
-# background
+# background相關屬性大攻略
+
+## background
+
+CSS簡寫屬性，可以用來設置以下一個或多個屬性，順序任意。
+```scss
+// 預設值:
+background-image     : none;
+background-position  : 0% 0%;
+background-size      : auto auto;
+background-repeat    : repeat;
+background-origin    : padding-box;
+background-clip      : border-box;
+background-attachment: scroll;
+background-color     : transparent;
+```
+
 
 ## background-attachment
 
@@ -18,6 +34,20 @@ background-attachment: inherit;
 
 #### fixed
 
+背景圖像相對於瀏覽器視窗固定。 
+
+背景圖只能出現在它父元素能達到的區域。即使圖片是相對於視口(view port)定位地，如果它的父元素不可見，圖片就會消失。
+
+#### scroll
+
+背景圖像相對於元素固定，也就是說當元素內容滾動時背景圖像不會跟著滾動，因為背景圖像總是要跟著元素本身。但會隨元素的祖先元素或窗體一起滾動。 
+
+#### local
+
+背景圖像相對於元素內容固定，也就是說當元素隨元素滾動時背景圖像也會跟著滾動，同時背景圖像的大小也是跟著內容改變，也就是說可以往下 scroll越多的元素，背景圖片越大。（現在只有 chrome支援，還很不普及。）
+
+
+
 ## background-clip
 
 決定背景圖或背景顏色的顯現範圍。
@@ -32,7 +62,7 @@ background-clip: padding-box;
 background-clip: content-box;
 ```
 
-
+![background-clip效果示意圖](clip.jpg)
 
 ## background-repeat
 
