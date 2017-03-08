@@ -1,5 +1,6 @@
 # Visual Studio Code
-## 開啟命令面板
+## F1 或 Ctrl + shift +p 開啟命令面板
+
 `Ctrl + Shift + P` 或 `F1`
 
 在這個命令框裡可以執行 VSCode的任何一條命令，可以查看每條命令對應的快捷鍵，甚至可以關閉這個編輯器。

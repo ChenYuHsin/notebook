@@ -288,6 +288,10 @@ span.C{
 
 #### flex-basis 物件預設寬度
 
+Flex-basis affects an element's size *across the main axis.*Flex-basis thus alternately determines width **or** height, depending on flex-direction.
+
+![](flex-basis.gif)
+
 - 如果子元素有 flex-basis，就算作子元素的原始 width（不包括邊框和補邊）。
 - 如果沒有`flex-basis`或其屬性值為`0`，在有`width`的情況下以`width`來計，沒有`width`的話，則按其內容來計。
 - 如果同時聲明`width`屬性和`flex-basis`屬性時，會以`flex-basis`的值來計算。
